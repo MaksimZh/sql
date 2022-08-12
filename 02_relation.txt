@@ -1,3 +1,30 @@
+Решение с учётом работы над ошибками:
+
+Два столбца PK в одной таблице работают как один, т.е. значения в каждом столбце могут повторяться, но все пары должны быть уникальными.
+
+Тогда связи такие:
+
+многие Customers ко многим CustomerDemographics через CustomerCustomerDemo (пустая таблица, реальных связей нет)
+многие Customers ко многим Employees через Orders
+многие Customers ко многим Shippers через Orders
+многие Employees ко многим Territories через EmployeeTerritories
+многие Employees ко многим Shippers через Orders
+многие Orders ко многим Products через Oder Details
+многие Suppliers ко многим Categories через Products
+
+один Employees ко многим Employees через Employees:ReportsTo
+один Customers ко многим Orders через Orders:CustomerID
+один Employees ко многим Orders через Orders:EmployeeID
+один Shippers ко многим Orders через Orders:ShipVia
+один Suppliers ко многим Products через Products:SupplierID
+один Categories ко многим Products через Products:CategoryID
+один Region ко многим Territories через Territories:RegionID
+
+
+===============================================================================
+
+Исходное решение: 
+
 CustomerCustomerDemo
 Оба столбца в этой таблице PK, и их значения не могут повторяться.
 Таблица задаёт взаимосвязь один к одному между записями в таблицах Customers и CustomerDemographics.
