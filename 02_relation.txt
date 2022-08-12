@@ -1,0 +1,29 @@
+CustomerCustomerDemo
+Оба столбца в этой таблице PK, и их значения не могут повторяться.
+Таблица задаёт взаимосвязь один к одному между записями в таблицах Customers и CustomerDemographics.
+
+Employees
+Столбец ReportsTo - FK, и он ссылается на одну запись в этой же таблице.
+Здесь установлена связь один ко многим: на одного начальника может ссылаться несколько подчинённых.
+
+EmployeeTerritories
+Оба столбца в этой таблице PK, и их значения не могут повторяться.
+Таблица задаёт взаимосвязь один к одному между записями в таблицах Employees и Territories.
+
+Oder Details
+Столбцы OrderID и ProductID - PK, и их значения не могут повторяться.
+Таблица задаёт взаимосвязь один к одному между записями в таблицах Orders и Products.
+
+Orders
+CustomerID - FK - взаимосвязь один (Customers) ко многим (Orders)
+EmployeeID - FK - взаимосвязь один (Employees) ко многим (Orders) 
+ShipVia - FK - взаимосвязь один (Shippers) ко многим (Orders)
+С помощью этих трёх ключей создаётся взаимосвязь многие ко многим между всеми парами таблиц из Customers, Employees и Shippers.
+
+Products
+SupplierID - FK - взаимосвязь один (Suppliers) ко многим (Products)
+CategoryID - FK - взаимосвязь один (Categories) ко многим (Products)
+С помощью этих двух ключей создаётся взаимосвязь многие ко многим между записями в таблицах Suppliers и Categories.
+
+Territories
+RegionID - FK - взаимосвязь один (Region) ко многим (Territories)
