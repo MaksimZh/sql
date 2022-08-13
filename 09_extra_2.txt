@@ -1,7 +1,15 @@
 9.4.1
+// Старое решение:
 SELECT c1.ContactName, c1.Region, c2.ContactName, c2.Region
 FROM Customers c1, Customers c2
 WHERE (c1.Region IS NULL) AND (c2.Region IS NULL);
+
+// Работа над ошибками:
+SELECT c1.ContactName, c1.Region, c2.ContactName, c2.Region
+FROM Customers c1, Customers c2
+WHERE
+    (c1.Region IS NULL) AND (c2.Region IS NULL) AND
+    (c1.CustomerID <> c2.CustomerID);
 
 
 9.4.2
