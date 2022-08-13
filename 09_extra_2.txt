@@ -1,0 +1,19 @@
+9.4.1
+SELECT c1.ContactName, c1.Region, c2.ContactName, c2.Region
+FROM Customers c1, Customers c2
+WHERE (c1.Region IS NULL) AND (c2.Region IS NULL);
+
+
+9.4.2
+SELECT * FROM Orders
+WHERE CustomerID = ANY (
+    SELECT CustomerID FROM Customers
+    WHERE Region IS NOT NULL
+);
+
+
+9.4.3
+SELECT * FROM Orders
+WHERE Freight > ALL (
+    SELECT UnitPrice FROM Products
+);
