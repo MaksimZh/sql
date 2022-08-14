@@ -1,0 +1,41 @@
+10.4.1
+SELECT Products.ProductName, [Order Details].UnitPrice
+FROM Products
+INNER JOIN [Order Details]
+ON Products.ProductID = [Order Details].ProductID
+WHERE [Order Details].UnitPrice < 20;
+
+
+10.4.2
+SELECT Orders.Freight, Customers.CompanyName
+FROM Orders INNER JOIN Customers
+ON Orders.CustomerID = Customers.CustomerID
+ORDER BY Freight;
+
+Выдача с FULL JOIN получилась объёмнее, чем с INNER JOIN, из-за записей, которым не нашлось пары, удовлетворяющей условию в ON.
+В моей версии базы значения NULL встречались только в поле Freight, поскольку все значения Orders.CustomerID встречались в таблице Customers.
+Когда я добавил заказ с CustomerID равным NULL, то запрос выдал дополнительную запись вида (0.00, NULL), поскольку для этого заказа не нашлось покупателя в таблице Customers.
+
+
+10.4.3
+Для превращения CROSS JOIN в INNER JOIN нужно добавить такое же условие WHERE, как в ON у INNER JOIN:
+
+SELECT Region.RegionDescription, Territories.TerritoryDescription
+FROM Region
+INNER JOIN Territories
+ON Region.RegionID = Territories.RegionID;
+
+SELECT Region.RegionDescription, Territories.TerritoryDescription
+FROM Region
+CROSS JOIN Territories
+WHERE Region.RegionID = Territories.RegionID;
+
+
+10.4.4
+SELECT Products.ProductName, [Order Details].UnitPrice
+FROM Products CROSS JOIN [Order Details]
+WHERE Products.ProductID = [Order Details].ProductID;
+->
+SELECT Products.ProductName, [Order Details].UnitPrice
+FROM Products INNER JOIN [Order Details]
+ON Products.ProductID = [Order Details].ProductID;
