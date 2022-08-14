@@ -1,4 +1,12 @@
 10.4.1
+Работа над ошибками:
+SELECT Products.ProductName, [Order Details].UnitPrice
+FROM Products
+INNER JOIN [Order Details]
+ON [Order Details].UnitPrice < 20
+    AND Products.ProductID = [Order Details].ProductID;
+
+Старое решение:
 SELECT Products.ProductName, [Order Details].UnitPrice
 FROM Products
 INNER JOIN [Order Details]
