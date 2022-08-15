@@ -1,0 +1,20 @@
+15.7
+
+CREATE TABLE Territories (
+	TerritoryID nvarchar(20) NOT NULL,
+	TerritoryDescription nchar(50) NOT NULL,
+	RegionID int NOT NULL
+);
+
+INSERT INTO Region (RegionID, RegionDescription)
+VALUES
+	(1, 'Alpha'),
+	(2, 'Beta');
+
+INSERT INTO Territories (TerritoryID, TerritoryDescription, RegionID)
+VALUES
+	('A0', 'a0', 1),
+	('B0', 'b0', 2),
+	('B1', 'b1', 2),
+	('A1', 'a1', 1),
+	('A2', 'a2', 1);
