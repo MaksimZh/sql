@@ -1,0 +1,5 @@
+CREATE CLUSTERED INDEX idx_RegionID ON Region (RegionID);
+
+CREATE INDEX idx_RegionID ON Territories (RegionID);
+
+CREATE CLUSTERED INDEX idx_TerritoryID ON Territories (TerritoryID);
